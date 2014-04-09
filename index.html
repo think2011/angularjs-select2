@@ -2,36 +2,76 @@
 <html lang="zh-CN">
 <head>
 	<meta charset="UTF-8">
-	<title>angularjs 封装select2</title>
-    <link rel="stylesheet" href="js/plugins/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/common.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>select2 directive</title>
+    <link rel="stylesheet" href="common/plugins/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="common/common.css" />
     <link rel="stylesheet" href="css/index.css" />
+
+    <!-- select2 -->
+    <link rel="stylesheet" href="common/plugins/select2/select2.css" />
+    <link rel="stylesheet" href="common/plugins/select2/select2-bootstrap.css" />
 </head>
 <body ng-controller="appCtrl">
-	<div class="container">
+	<div class="container-fluid">
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3">
                 <div class="page-header">
-                    <h1 class="text-center">angularjs 封装select2</h1>
+                    <h1 class="text-center">select2 directive</h1>
                 </div>
-                {{ a }}
+                <h4>1. 支持动态ng-model</h4>
+                <span class="text-muted">ng-model:</span> {{ a }}
                 <br/>
-                A: <input class="form-control" ng-model="a" type="text" placeholder="测试内容" select2="config" style="width: 300px;">
+                <span class="text-muted">select2-model:</span> {{ aS2 | json }}
+                <input select2 ng-model="a" select2-model="aS2" config="config1" class="form-control" type="text"/>
                 <br/>
+                <button ng-click="aS2 = {id:4,text:'wontfix'}" class="btn btn-success btn-sm pull-right">设置数据</button>
+                <span class="clearfix"></span>
+                <hr/>
 
-                <button type="submit" ng-click="a = [{title:'我是改变后的内容', id: 1}]">改变A</button>
+                <h4>2. 支持select标签</h4>
+                <span class="text-muted">ng-model:</span> {{ b }}
+                <br/>
+                <select select2 ng-model="b" class="form-control" placeholder="我也有placeholder">
+                    <option value="1">数据1</option>
+                    <option value="2">数据2</option>
+                    <option value="3">数据3</option>
+                    <option value="4">数据4</option>
+                    <option value="{{ item.id }}" ng-repeat="item in config2">{{ item.text }}</option>
+                </select>
+                <br/>
+                <button ng-click="b = 3" class="btn btn-success btn-sm pull-right">设置数据</button>
+                <span class="clearfix"></span>
+                <hr/>
+
+                <h4>3. 支持自定义配置及多选（与select2原生的配置方式一致）</h4>
+                <span class="text-muted">ng-model:</span> {{ c }}
+                <br/>
+                <span class="text-muted">select2-model:</span> {{ cS2 | json }}
+                <input select2 ng-model="c" select2-model="cS2" config="config3" multiple placeholder="支持多选哦" class="form-control" type="text"/>
+                <br/>
+                <button ng-click="cS2 = [{id:3,text:'invalid'},{id:4,text:'wontfix'}]" class="btn btn-success btn-sm pull-right">设置数据</button>
+                <span class="clearfix"></span>
+                <hr/>
+
+                <h4>3. 支持ajax（这也是一个自定义内置配置的例子）</h4>
+                <span class="text-muted">ng-model:</span> {{ d }}
+                <br/>
+                <span class="text-muted">select2-model:</span> {{ dS2 | json }}
+                <input select2 ng-model="d" select2-model="dS2" config="default" query="testAJAX" placeholder="ajax数据得在服务器环境下查看" class="form-control" type="text"/>
+                <br/>
+                <button ng-click="dS2 = {id: '462983441', title: 'Ocean Thirteen'}" class="btn btn-success btn-sm pull-right">设置数据</button>
+                <span class="clearfix"></span>
             </div>
         </div>
     </div>
 
 	<!-- javascript
 		================================================== -->
-	<script src="js/plugins/seajs/sea.js" type="text/javascript"></script>
-    <script src="js/plugins/angular/angular.min.js"></script>
-    <script type="text/javascript">
-		seajs.use('./js/common',function(){
-			seajs.use('./js/index.js');
-		});
-	</script>
+	<script src="common/plugins/jquery/dist/jquery.min.js" type="text/javascript"></script>
+	<script src="common/plugins/angular/angular.min.js" type="text/javascript"></script>
+    <!-- select2 -->
+	<script src="common/plugins/select2/select2.min.js" type="text/javascript"></script>
+	<script src="js/index.js" type="text/javascript"></script>
 </body>
 </html>

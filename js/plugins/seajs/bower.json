@@ -1,9 +1,0 @@
-{
-  "name": "sea",
-  "version": "2.2.0",
-  "main": "./sea.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/cfddream/bower-seajs.git"
-  }
-}

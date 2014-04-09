@@ -1,0 +1,11 @@
+/* reset */
+html, body {
+    font-size: 13px;
+    color: #4f4f4f;
+	font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";
+}
+
+/* angularJS cloak */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
