@@ -8,7 +8,6 @@ angularjs封装的select2（支持任意版本的select2）
 * 支持ajax
 * 支持自定义内置配置
 
-=======
 具体使用请下载源码，打开index.html查看。
 ![demo页面](http://think2011.qiniudn.com/angularjs-select2.png)
 
