@@ -76,6 +76,11 @@ app.directive('select2', function (select2Query) {
                     if(!newVal) { return false }
                     $element.select2('data', newVal);
                 }, true);
+
+                // model - view
+                scope.$watch('ngModel', function (newVal) {
+                    $element.select2('val', newVal);
+                }, true);
             }
         }
     }
