@@ -79,6 +79,9 @@ app.directive('select2', function (select2Query) {
 
                 // model - view
                 scope.$watch('ngModel', function (newVal) {
+                    // 跳过ajax方式
+                    if(config.ajax) { return false }
+
                     $element.select2('val', newVal);
                 }, true);
             }
