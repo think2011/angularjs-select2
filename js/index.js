@@ -79,8 +79,8 @@ app.directive('select2', function (select2Query) {
 
                 // model - view
                 scope.$watch('ngModel', function (newVal) {
-                    // 跳过ajax方式
-                    if(config.ajax) { return false }
+                    // 跳过ajax方式以及多选情况
+                    if(config.ajax || config.multiple) { return false }
 
                     $element.select2('val', newVal);
                 }, true);
