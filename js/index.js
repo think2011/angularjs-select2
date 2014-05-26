@@ -73,7 +73,6 @@ app.directive('select2', function (select2Query) {
 
                 // model - view
                 scope.$watch('select2Model', function (newVal) {
-                    if(!newVal) { return false }
                     $element.select2('data', newVal);
                 }, true);
 
