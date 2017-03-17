@@ -33,6 +33,7 @@ app.directive('select2', function (select2Query) {
                 var $element = $(element);
                 delete config.multiple;
 
+                angular.extend(config, scope.config);
                 $element
                     .prepend('<option value=""></option>')
                     .val('')
